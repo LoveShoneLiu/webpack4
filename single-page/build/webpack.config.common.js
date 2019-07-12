@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 console.log('__dirname__dirname__dirname__dirname', __dirname);
+
 module.exports = {
     entry: {
         "main": path.resolve(__dirname, '../src/index.js')
@@ -76,19 +77,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.(css|scss|less)/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            // modules: true
-                        }
-                    },
-                    'postcss-loader']
-            },
-            {
                 test: /\.(woff|woff2|ttf|svg|eot)$/,
                 use: {
                     loader: 'file-loader',
@@ -115,7 +103,8 @@ module.exports = {
             //         reuseExistingChunk: true
             //     }
             // }
-        }
+        },
+        usedExports: true,   // tree shaking  引入的打包，没引入的不打包
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -128,5 +117,5 @@ module.exports = {
         //     _: 'lodash',
         //     _join: ['lodsh', 'join'],    // 如果在文件中使用_join，就会默认知道是lodash的join方法
         // })
-    ],
+    ]
 }

@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.config.common.js');
+
 const config = {
     mode: "development",
     devtool: 'cheap-module-eval-source-map',  // 开发环境使用
@@ -16,6 +16,23 @@ const config = {
         hot: true,
         // hotOnly: true   // 如果不设置，html出错的时候会刷新页面，设置为true，html出错也不会刷新页面
     },
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss|less)/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            // modules: true
+                        }
+                    },
+                    'postcss-loader']
+            },
+        ]
+    },
     resolve: {
         alias: {
             jspath: path.resolve(__dirname, '../src/js/'),
@@ -27,11 +44,7 @@ const config = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ],
-
-    optimization: {
-        usedExports: true,   // tree shaking  引入的打包，没引入的不打包
-    }
+    ]
 }
 
 module.exports = merge(commonConfig, config);

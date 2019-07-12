@@ -1,4 +1,6 @@
 import vue from 'vue';
+import './index.css';
+import './index2.css';
 // console.log('vue', vue);
 
 console.log('this', this);
@@ -33,6 +35,5 @@ new Promise(() => {
 });
 
 var html = document.getElementById('root');
-import './index.css';
 root.innerHTML = '<div class="iconfont iconcai">test</div>';
 console.log(2);
