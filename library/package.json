@@ -1,0 +1,19 @@
+{
+  "name": "library",  // 在这设置库名字，注意不要和npm的其他库的名字重复
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/library.js",  // main需要设置成library.js
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.14"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  }
+}
