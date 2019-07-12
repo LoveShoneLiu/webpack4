@@ -1,5 +1,7 @@
 import vue from 'vue';
-console.log('vue', vue);
+// console.log('vue', vue);
+
+console.log('this', this);
 
 
 // 同步
