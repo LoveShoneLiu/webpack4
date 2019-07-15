@@ -53,8 +53,8 @@ const config = {
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name]_[hash:8].css', // 直接被页面引入的，会走filename
-            chunkFilename: '[name]_[hash:8].chunk.css'   // 如果间接的被引入，会走chunkFilename
+            filename: 'css/[name]_[hash:8].css', // 直接被页面引入的，会走filename
+            chunkFilename: 'css/[name]_[hash:8].chunk.css'   // 如果间接的被引入，会走chunkFilename
         })
     ],
 }

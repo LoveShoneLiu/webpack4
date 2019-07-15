@@ -14,8 +14,8 @@ module.exports = {
         publicPath: '/',   // 指定资源基础路径
         path: path.resolve(__dirname, '../dist'),
         // filename: '[name]_[hash:8].js', // 业务代码加hash值
-        filename: '[name]_[hash:8].js', // 业务代码加hash值, contenthash:文件代码不改，contenthash也不会变
-        chunkFilename: '[name].js'  // 公共文件不加hash值，例如vendors~lodash.js和vendors~main.js
+        filename: 'js/[name]_[hash:8].js', // 业务代码加hash值, contenthash:文件代码不改，contenthash也不会变
+        chunkFilename: 'js/[name].js'  // 公共文件不加hash值，例如vendors~lodash.js和vendors~main.js
     },
     resolve: {
         alias: {
