@@ -7,6 +7,7 @@ console.log('__dirname__dirname__dirname__dirname', __dirname);
 
 module.exports = {
     entry: {
+        // "main": path.resolve(__dirname, '../src/index-test.js')
         "main": path.resolve(__dirname, '../src/index.js')
     },
     output: {
@@ -52,9 +53,7 @@ module.exports = {
                                 [
                                     "@babel/preset-env", // preset-env会把es6的代码打包成es5的代码，只是翻译了一部分，还有一些es6的功能不能通过preset-env翻译，所以需要polyfill帮助
                                     {
-                                        // targets: {
-                                        //     chrome: "<67"   // 小于67的版本才会进行es6转es5 打包
-                                        // },
+                                        "corejs": "3",
                                         useBuiltIns: "usage",    // 这样设置，在做polyfill做代码填充的时候，不是所有的垫片都会加载进去，如果我只用到了promise那么只填充promise的垫片，其他的不会填充，这样js就不会那么大了
                                     }
                                 ]
@@ -117,18 +116,6 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',   // 自动帮你做代码分割, async: 只对异步代码生效 all: 同步异步都做代码分割，除了chunks: "all"其他的不配置，会使用默认项，可以在官网看到默认项
-            // cacheGroups: {
-            //     vendors: {
-            //         test: /[\\/]node_modules[\\/]/,
-            //         priority: -10,
-            //         // filename: "vendors.js"
-            //     },
-            //     default: {
-            //         minChunks: 2,
-            //         priority: -20,
-            //         reuseExistingChunk: true
-            //     }
-            // }
         },
         usedExports: true,   // tree shaking  引入的打包，没引入的不打包
     },

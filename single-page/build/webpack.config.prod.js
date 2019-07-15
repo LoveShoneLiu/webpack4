@@ -16,8 +16,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const config = {
     mode: "production",
-    devtool: 'cheap-module-eval-source-map',  // 开发环境使用
-    // devtool: 'cheap-module-source-map', // 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个
+    // devtool: 'cheap-module-eval-source-map',  // 开发环境使用,使用这个打包的vendors会很大，680kn左右
+    // devtool: 'cheap-module-source-map', // 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个，但是也会让vendors变大，不使用会更小
     optimization: {
         minimizer: [
 
