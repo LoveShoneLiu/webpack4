@@ -21,6 +21,7 @@ const config = {
             {
                 test: /\.(css|scss|less)/,
                 use: [
+                    'vue-style-loader',
                     'style-loader',
                     {
                         loader: 'css-loader',
@@ -29,21 +30,13 @@ const config = {
                             // modules: true
                         }
                     },
-                    'postcss-loader']
+                    'postcss-loader'
+                ]
             },
         ]
     },
-    resolve: {
-        alias: {
-            jspath: path.resolve(__dirname, '../src/js/'),
-            csspath: path.resolve(__dirname, '../src/css/'),
-            rootPath: path.resolve(__dirname, '../src/'),
-            componentsPath: path.resolve(__dirname, '../src/components/'),
-        },
-        extensions: ['.js', '.vue', '.json']
-    },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
 

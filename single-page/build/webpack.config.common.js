@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 console.log('__dirname__dirname__dirname__dirname', __dirname);
 
 module.exports = {
@@ -17,6 +18,11 @@ module.exports = {
     },
     resolve: {
         alias: {
+            // jspath: path.resolve(__dirname, '../src/js/'),
+            // csspath: path.resolve(__dirname, '../src/css/'),
+            // rootPath: path.resolve(__dirname, '../src/'),
+            // componentsPath: path.resolve(__dirname, '../src/components/'),
+
             // npm默认安装vue“运行时”版本，加入下面代码，则使用编译+运行时版本，如果只使用“运行时”版本，则不能使用template，只能使用render函数
             // vue: 'vue/dist/vue.js'
         },
@@ -24,6 +30,17 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                use: [
+                    {
+                        loader: 'vue-loader',
+                        options: {
+                            extractCSS: true
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -107,6 +124,7 @@ module.exports = {
         usedExports: true,   // tree shaking  引入的打包，没引入的不打包
     },
     plugins: [
+        new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html')
         }),

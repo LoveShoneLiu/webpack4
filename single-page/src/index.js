@@ -1,39 +1,21 @@
-import vue from 'vue';
+import Vue from 'vue';
 import './index.css';
-import './index2.css';
-// console.log('vue', vue);
-
-console.log('this', this);
+import App from './components/App/index.vue';
+import { add } from './assets/js/math.js'; 
 
 
-// 同步
-// import _ from 'lodash';
-// var element = document.createElement('div');
-// element.innerHTML = _.join(['liu', 'shaofe', 'fei'], '-');
-// document.body.appendChild(element);
+var test = 'liu shao fei';
+console.log('test', test);
 
+add(1, 2);
 
-
-// 异步
-function getComponent() {
-    // /* webpackChunkName: "lodash" */ 用来设置lodash打包的名字
-    return import(/* webpackChunkName: "lodash" */ 'lodash').then((({ default: _ }) => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['liu', 'shaofe', 'fei'], '-');
-        return element;
-    }))
-}
-getComponent().then(element => {
-    document.body.appendChild(element);
-});
+new Vue({
+	render: h =>h(App)
+}).$mount('#root');
 
 
 
 
-new Promise(() => {
-    console.log('promise');
-});
 
-var html = document.getElementById('root');
-root.innerHTML = '<div class="iconfont iconcai">test</div>';
-console.log(2);
+
+

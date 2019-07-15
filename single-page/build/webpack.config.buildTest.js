@@ -20,22 +20,28 @@ const config = {
     // devtool: 'cheap-module-source-map', // 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个
     optimization: {
         minimizer: [
-
-            // 压缩css代码
             new OptimizeCSSAssetsPlugin({}),
-
-            // 压缩js代码
             new UglifyJsPlugin({
                 cache: true,
                 parallel: true,
                 sourceMap: true // set to true if you want JS source maps
             }),
         ],
+        splitChunks: {
+            // cacheGroups: {
+            //     styles: {
+            //     //   name: 'styles',
+            //       test: /\.css$/,
+            //       chunks: 'all',
+            //       enforce: true,
+            //     },
+            // },
+        }
     },
     module: {
         rules: [
             {
-                test: /\.(css|scss|less)/,
+                test: /\.(css|scss|less)$/,
                 use: [
                     MiniCssExtractPlugin.loader,    // dev使用的style-loader，不一样的配置
                     {
@@ -55,7 +61,7 @@ const config = {
         new MiniCssExtractPlugin({
             filename: '[name]_[hash:8].css', // 直接被页面引入的，会走filename
             chunkFilename: '[name]_[hash:8].chunk.css'   // 如果间接的被引入，会走chunkFilename
-        })
+        }),
     ],
 }
 
