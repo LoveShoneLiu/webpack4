@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
         <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+        <Test></Test>
 
         <el-dialog
         title="提示"
@@ -19,11 +20,20 @@
 <script>
 import axios from 'axios';
 import qs from 'qs';
+
 export default {
     data() {
       return {
         dialogVisible: false
       };
+    },
+    components: {
+
+      // Prefetch闲置时间加载组件
+      Test: () => import(
+        /* webpackChunkName: "test" */
+        /* webpackPrefetch: true */
+        "../Test/index.vue")
     },
     methods: {
       handleClose(done) {
