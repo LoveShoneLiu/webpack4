@@ -61,6 +61,15 @@ module.exports = {
                             ],
                             plugins: [
                                 "@babel/plugin-syntax-dynamic-import",  // 使用import()
+
+                                // element-ui按需加载
+                                [
+                                    "component",
+                                    {
+                                      "libraryName": "element-ui",
+                                      "styleLibraryName": "theme-chalk"
+                                    }
+                                ]
                             ]
 
                             // 业务开发的时候上面的presets设置就可以了，如果要开发是一个库代码，这个时候要用 plugin-transform-runtime和@babel/runtime，因为他们会闭包形式注入，防止污染全局环境
