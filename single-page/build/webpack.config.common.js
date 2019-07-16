@@ -15,7 +15,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         // filename: '[name]_[hash:8].js', // 业务代码加hash值
         filename: 'js/[name]_[hash:8].js', // 业务代码加hash值, contenthash:文件代码不改，contenthash也不会变
-        chunkFilename: 'js/[name].js'  // 公共文件不加hash值，例如vendors~lodash.js和vendors~main.js
+        // chunkFilename: 'js/[name].js'  // 公共文件不加hash值，例如vendors~lodash.js和vendors~main.js
     },
     resolve: {
         alias: {
@@ -112,6 +112,14 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',   // 自动帮你做代码分割, async: 只对异步代码生效 all: 同步异步都做代码分割，除了chunks: "all"其他的不配置，会使用默认项，可以在官网看到默认项
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    filename: 'js/[name].js',
+                    minChunks: 1,
+                    chunks: 'all'
+                }
+            }
         },
         usedExports: true,   // tree shaking  引入的打包，没引入的不打包
     },
