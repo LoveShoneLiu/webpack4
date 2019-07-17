@@ -5,8 +5,13 @@ const commonConfig = require('./webpack.config.common.js');
 
 const config = {
     mode: "development",
+
+    /**
+     * sourcemap的作用：当代码出错的时候，sourcemap用来指向（映像）出错的代码
+     * devtool: 'cheap-module-eval-source-map',  // 开发环境使用,性价比高
+     * devtool: 'cheap-module-source-map',  // 线上环境使用，性价比高， 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个
+    */
     devtool: 'cheap-module-eval-source-map',  // 开发环境使用
-    // devtool: 'cheap-module-source-map', // 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个
     devServer: {
         publicPath: '/', 
         contentBase: '/dist',  // devserver的根目录

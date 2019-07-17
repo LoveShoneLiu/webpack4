@@ -5,9 +5,7 @@ const { commonConfig } = require('./webpack.config.common.js');
 
 const config = {
     mode: "development",
-    // devtool: 'cheap-module-eval-source-map',  // 开发环境使用
     devtool: 'cheap-module-source-map',  // 开发环境使用
-    // devtool: 'cheap-module-source-map', // 线上不需要使用sourceMap，但是如果也想在线上出错的时候提示具体错误，可以使用这个
     devServer: {
         publicPath: '/', 
         contentBase: '/dist',  // devserver的根目录
