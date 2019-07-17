@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 console.log('__dirname__dirname__dirname__dirname', __dirname);
+console.log(22222222, path.resolve(__dirname, '../src/index.js'));
 
 module.exports = {
     entry: {
@@ -118,7 +119,15 @@ module.exports = {
                     filename: 'js/[name].js',
                     minChunks: 1,
                     chunks: 'all'
-                }
+                },
+
+                // asyncs: {
+                //     filename: 'js/[name].js',
+                //     minChunks: 1,
+                //     priority: -5,
+                //     chunks: 'async',
+                //     reuseExistingChunk: false
+                // }
             }
         },
         usedExports: true,   // tree shaking  引入的打包，没引入的不打包

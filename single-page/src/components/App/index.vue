@@ -30,8 +30,8 @@ export default {
     components: {
 
       // Prefetch闲置时间加载组件
+        // /* webpackChunkName: "test" */
       Test: () => import(
-        /* webpackChunkName: "test" */
         /* webpackPrefetch: true */
         "../Test/index.vue")
     },
